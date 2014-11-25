@@ -29,6 +29,7 @@ types = paste((lapply(tbl,class)),sep='')
 types = gsub("integer","int",types)
 types = gsub("character","text",types)
 types = gsub("numeric","float",types)
+types = gsub("logical","boolean",types)
 
 # get column names
 names = colnames(tbl)
