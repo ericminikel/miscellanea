@@ -18,7 +18,14 @@ percent = function(proportion,digits=2) {
 }
 
 # make nice column names - all lowercase, all word characters, 
-fix_colnames = function(colnames) {
+fix_colnames = function(variable) {
+  if (class(variable)=='data.frame') { # if they passed you the whole data frame
+    colnames = colnames(variable)
+  } else if (class(variable) == 'character') { # if they just passed the colnames
+    colnames = variable
+  } else {
+    stop(paste('You passed fix_colnames a variable of type: ',class(variable),'\n',sep=''))
+  }
   new_colnames = colnames
   # if colname was "123" in source file, R makes it "X123", now make it "_123"
   starts_with_number = grep('^X[0-9]',new_colnames)
