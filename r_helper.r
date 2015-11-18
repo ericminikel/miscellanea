@@ -34,3 +34,11 @@ fix_colnames = function(variable) {
   new_colnames = gsub("[^A-Za-z0-9_]","_",tolower(new_colnames)) 
   return (new_colnames)
 }
+
+# add transparency to a hex color
+alpha = function(rgb_hexcolor, proportion) {
+  hex_proportion = sprintf("%02x",round(proportion*255))
+  rgba = paste(rgb_hexcolor,hex_proportion,sep='')
+  return (rgba)
+}
+
